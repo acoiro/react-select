@@ -1918,6 +1918,12 @@ test('renders a read only input when isSearchable is false', () => {
   expect(inputWrapper.props().readOnly).toBe(true);
 });
 
+test('renders a read only input with aria label', () => {
+  let selectWrapper = mount(<Select options={OPTIONS} isSearchable={false} aria-label="This is a custom aria label" />);
+  let inputWrapper = selectWrapper.find('Control input');
+  expect(inputWrapper.props()['aria-label']).toBe('This is a custom aria label');
+});
+
 cases(
   'clicking on disabled option',
   ({ props = BASIC_PROPS, optionsSelected }) => {
